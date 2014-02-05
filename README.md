@@ -1,5 +1,6 @@
 
 # Affiliate URLs
+#### A WordPress plugin
 
 Affilate URLs is a complete URL management system for WordPress that allows you create, manage, and track outbound links from your site. Additionally Affiliate URLs allows you to override your redirects with PPC tracking software tracking URLs, a feature of iMobiTrax.
 
