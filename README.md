@@ -1,4 +1,5 @@
 # Affiliate URLs
+## A WordPress Plugin
 
 - Contributors: hypedtext
 - Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WSVM264W5YDNS
