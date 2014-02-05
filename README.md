@@ -25,16 +25,16 @@ Affiliate URLs also allows you to override your redirects with PPC tracking soft
 
 ## Frequently Asked Questions
 
-#### When I try to access my new URL, I'm getting a 404 (not found) error
+- #### When I try to access my new URL, I'm getting a 404 (not found) error
 
-Sounds like you didn't follow the installation instructions :-) Navigate to `Settings > Permalinks` and save them. No need to change anything, just click the save button.
+	Sounds like you didn't follow the installation instructions :-) Navigate to `Settings > Permalinks` and save them. No need to change anything, just click the save button.
 
-### Can I change the URL structure to use something other than /go/ ???
+- #### Can I change the URL structure to use something other than /go/ ???
 
-No, not without modifying the plugin.
+	No, not without modifying the plugin.
 
 ## Changelog
 
-### 0.0.1
+- #### 0.0.1
 
-- Initial Release
+	Initial Release
