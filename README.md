@@ -1,14 +1,9 @@
-=== Plugin Name ===
-Contributors: hypedtext
-Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WSVM264W5YDNS
-Tags: redirect, click tracking, custom post types, imobitrax, affiliate
-Requires at least: 3.8.1
-Tested up to: 3.8.1
-Stable tag: 0.0.1
 
-Affilate URLs is a complete URL management system that allows you create, manage, and track outbound links from your site. Additionally Affiliate URLs allows you to override your redirects with PPC tracking software tracking URLs, a feature of iMobiTrax.
+# Affiliate URLs
 
-== Description ==
+Affilate URLs is a complete URL management system for WordPress that allows you create, manage, and track outbound links from your site. Additionally Affiliate URLs allows you to override your redirects with PPC tracking software tracking URLs, a feature of iMobiTrax.
+
+## Description
 
 Affiliate URLs is a complete URL management system that allows you create, manage, and track outbound links from your site by using custom post types and 301 redirects.
 
@@ -18,29 +13,28 @@ And by avoiding page based redirects, which is the current trend in masking affi
 
 Affiliate URLs also allows you to override your redirects with PPC tracking software tracking URLs, a feature of iMobiTrax.
 
-== Installation ==
+## Installation
 
 1. Upload the entire `Affiliate-URLs` folder to the `/wp-content/plugins/` directory
-1. DO NOT change the name of the `Affiliate-URLs` folder
-1. Activate the plugin through the 'Plugins' menu in WordPress
-1. Navigate to `Settings > Permalinks` and save them. Yes, just click save. Trust me.
-1. Navigate to the `Affiliate URLs` menu
-1. Create a new URL, or manage existing URLs.
-1. Publish and use the URLs however you want!
+2. DO NOT change the name of the `Affiliate-URLs` folder
+3. Activate the plugin through the 'Plugins' menu in WordPress
+4. Navigate to `Settings > Permalinks` and save them. Yes, just click save. Trust me.
+5. Navigate to the `Affiliate URLs` menu
+6. Create a new URL, or manage existing URLs.
+7. Publish and use the URLs however you want!
 
-== Frequently Asked Questions ==
+## Frequently Asked Questions
 
-= When I try to access my new URL, I'm getting a 404 (not found) error =
+#### When I try to access my new URL, I'm getting a 404 (not found) error
 
-Sounds like you didn't follow the installation instructions :-)
+Sounds like you didn't follow the installation instructions :-) Navigate to `Settings > Permalinks` and save them. No need to change anything, just click the save button.
 
-Navigate to `Settings > Permalinks` and save them. No need to change anything, just click the save button.
-
-= Can I change the URL structure to use something other than /go/ ??? =
+### Can I change the URL structure to use something other than /go/ ???
 
 No, not without modifying the plugin.
 
-== Changelog ==
+## Changelog
 
-= 0.0.1 =
-* Initial Release
+### 0.0.1
+
+- Initial Release
