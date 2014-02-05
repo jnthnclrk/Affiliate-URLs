@@ -10,7 +10,7 @@ Affilate URLs is a complete URL management system for WordPress that allows you 
 #### Affiliate URLs
 ![Affiliate URLs](screenshot-2.png "Affiliate URLs")
 
-#### Pay Per Click settings
+#### Pay Per Click Settings
 ![Pay Per Click settings](screenshot-3.png "Pay Per Click override settings")
 
 ## Description
