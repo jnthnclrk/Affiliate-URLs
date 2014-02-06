@@ -3,31 +3,34 @@
 Plugin Name: Affiliate URLs
 Description: Affilate URLs is a complete URL management system for WordPress that allows you create, manage, and track outbound links from your site. Additionally Affiliate URLs allows you to override your redirects with PPC tracking software tracking URLs, a feature of iMobiTrax.
 Plugin URI: http://www.skyrockinc.com/aff-urls/
-Description: 
 Version: 0.0.1
 Author: hypedtext
 Author URI: http://www.skyrockinc.com/
 */
 class AffURLs {
 
-	// Constructor
 	function __construct() {
+
+		// Settings framework
+        require_once( plugin_dir_path( __FILE__) . 'php/wp-settings-framework.php' );
+        $this-> affurlssettings = new WordPressSettingsFramework( plugin_dir_path( __FILE__ ) . 'php/settings.php' );
+        add_filter( $this->affurlssettings->get_option_group() .'_settings_validate', array(&$this, 'validate_settings') );
+
+		// Custom post type
 		add_action( 'init', array( &$this, 'register_post_type' ) );
 		add_action( 'manage_posts_custom_column', array( &$this, 'columns_data' ) );
 		add_filter( 'manage_edit-affurls_columns', array( &$this, 'columns_filter' ) );
-		add_action( 'admin_menu', array( &$this, 'add_meta_box' ) );
+		add_action( 'admin_menu', array( &$this, 'add_admin_ui' ) );
 		add_action( 'save_post', array( &$this, 'meta_box_save' ), 1, 2 );
 		add_action( 'template_redirect', array( &$this, 'count_and_redirect' ) );
-		add_action( 'wp_enqueue_scripts', array( &$this, 'add_js' ) );
-		add_action( 'wp_ajax_cookie_logic', array( &$this, 'cookie_logic' ) );
-		add_action( 'wp_ajax_nopriv_cookie_logic', array( &$this, 'cookie_logic' ) ); 
 
-		// New stuff
-        add_action( 'admin_menu', array(&$this, 'admin_menu') );
-        require_once( plugin_dir_path( __FILE__) . 'php/wp-settings-framework.php' );
-        $this-> affurlssettings = new WordPressSettingsFramework( plugin_dir_path( __FILE__ ) . 'php/settings.php' );
-        // Add an optional settings validation filter (recommended)
-        add_filter( $this->affurlssettings->get_option_group() .'_settings_validate', array(&$this, 'validate_settings') );
+		// PPC Redirect
+		if ( wpsf_get_setting( wpsf_get_option_group( plugin_dir_path( __FILE__ ) . 'php/settings.php' ), 'ppc', 'redirect' ) == 'on' ) {;
+			add_action( 'wp_enqueue_scripts', array( &$this, 'add_js' ) );
+			add_action( 'wp_ajax_cookie_logic', array( &$this, 'cookie_logic' ) );
+			add_action( 'wp_ajax_nopriv_cookie_logic', array( &$this, 'cookie_logic' ) ); 
+		}
+
 	}
 	
 	// PHP4 Constructor
@@ -36,7 +39,6 @@ class AffURLs {
 	}
 	
 	function register_post_type() {
-		
 		register_post_type( 'affurls',
 			array(
 				'labels' => array(
@@ -61,12 +63,7 @@ class AffURLs {
 				'rewrite' => array( 'slug' => 'go', 'with_front' => false )
 			)
 		);
-		
 	}
-
-    function admin_menu() {
-        add_submenu_page( 'edit.php?post_type=affurls', __( 'Settings', 'wp-settings-framework' ), __( 'Settings', 'wp-settings-framework' ), 'manage_options', 'affurlsssettings', array(&$this, 'settings_page') );
-    }
 
     function settings_page() {
 	    ?>
@@ -113,7 +110,8 @@ class AffURLs {
 		}
 	}
 	
-	function add_meta_box() {
+	function add_admin_ui() {
+        add_submenu_page( 'edit.php?post_type=affurls', __( 'Settings', 'wp-settings-framework' ), __( 'Settings', 'wp-settings-framework' ), 'manage_options', 'affurlsssettings', array(&$this, 'settings_page') );
 		add_meta_box('affurls', __('URL Information', 'affurls'), array( &$this, 'meta_box' ), 'affurls', 'normal', 'high');
 	}
 	
@@ -173,11 +171,9 @@ class AffURLs {
 
 		if ( !empty( $redirect ) ) {
 			if ( isset( $_COOKIE[ 'ppc' ] ) && $_COOKIE[ 'ppc' ] == 'true' ) {
-				//echo $_COOKIE[ 'ppc' ];
 				wp_redirect( esc_url_raw( wpsf_get_setting( wpsf_get_option_group( plugin_dir_path( __FILE__ ) . 'php/settings.php' ), 'ppc', 'offerlink' ) ), 301 );
 				exit;
 			} else {
-				//echo $_COOKIE[ 'ppc' ];
 				wp_redirect( esc_url_raw( $redirect ), 301);
 				exit;
 			}
